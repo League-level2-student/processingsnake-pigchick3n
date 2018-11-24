@@ -139,13 +139,13 @@ void keyPressed() {
 // 19. check if your head is out of bounds (teleport your snake head to the other side).
 
 void checkBoundaries() {
-  if (head.getX()>=500) {
+  if (head.getX()>500) {
     head.setX(0);
-  } else if (head.getY()>=500) {
+  } else if (head.getY()>500) {
     head.setY(0);
-  } else if (head.getX()<=0) {
+  } else if (head.getX()<0) {
     head.setX(500);
-  } else if (head.getY()<=0) {
+  } else if (head.getY()<0) {
     head.setY(500);
   }
 }
@@ -193,12 +193,15 @@ segments.add(new Segment(head.getX(),head.getY()));
   // To keep your tail the right length:
   // while the tail size is greater than the number of food pieces eaten, remove the first Segment in your tail.
 if(segments.size()>=food){
-
+segments.remove(0);
 }
-
+}
 void drawTail() {
   // Draw a 10 by 10 rectangle for each Segment in your snake ArrayList.
-  
+  for(int i = 0; i < segments.size(); i++){
+    segments.get(i).getX();
+    rect(segments.get(i).getX(),segments.get(i).getY(),10,10);
+  }
 }
 
 
@@ -206,9 +209,16 @@ void drawTail() {
 
 void checkTailCollision() {
 
-  // If your head has the same location as one of your segments...
-
+ // If your head has the same location as one of your segments...
+for(int i = 0; i < segments.size(); i++){
+    segments.get(i);
+  
+if(head.getX()==segments.get(i).getX()&&head.getY()==segments.get(i).getY()){
+  food=1;
+}
   // reset your food variable
 
   //Call this method at the beginning of your manageTail method.
+
+}
 }
