@@ -160,11 +160,11 @@ void checkBoundaries() {
 // 21. Complete the missing parts of the collision method below.
 
 void collision() {
-if(head.getX()==foodX&&head.getY()==foodY){
-  food+=1;
-  foodX = ((int)random(50)*10);
-  foodY = ((int)random(50)*10);
-}
+  if (head.getX()==foodX&&head.getY()==foodY) {
+    food+=1;
+    foodX = ((int)random(50)*10);
+    foodY = ((int)random(50)*10);
+  }
   // If the segment is colliding with a piece of food...
   // Increase the amount of food eaten and set foodX and foodY to new random locations.
 }
@@ -186,21 +186,21 @@ ArrayList<Segment> segments = new ArrayList<Segment>();
 void manageTail() {
 
   //Call the drawTail and checkTailCollision methods.
-drawTail();
-checkTailCollision();
-// Add a new Segment to your ArrayList that has the same X and Y as the head of your snake.
-segments.add(new Segment(head.getX(),head.getY()));
+  drawTail();
+  checkTailCollision();
+  // Add a new Segment to your ArrayList that has the same X and Y as the head of your snake.
+  segments.add(new Segment(head.getX(), head.getY()));
   // To keep your tail the right length:
   // while the tail size is greater than the number of food pieces eaten, remove the first Segment in your tail.
-if(segments.size()>=food){
-segments.remove(0);
-}
+  while(segments.size()>=food) {
+    segments.remove(0);
+  }
 }
 void drawTail() {
   // Draw a 10 by 10 rectangle for each Segment in your snake ArrayList.
-  for(int i = 0; i < segments.size(); i++){
+  for (int i = 0; i < segments.size(); i++) {
     segments.get(i).getX();
-    rect(segments.get(i).getX(),segments.get(i).getY(),10,10);
+    rect(segments.get(i).getX(), segments.get(i).getY(), 10, 10);
   }
 }
 
@@ -209,16 +209,15 @@ void drawTail() {
 
 void checkTailCollision() {
 
- // If your head has the same location as one of your segments...
-for(int i = 0; i < segments.size(); i++){
+  // If your head has the same location as one of your segments...
+  for (int i = 0; i < segments.size(); i++) {
     segments.get(i);
-  
-if(head.getX()==segments.get(i).getX()&&head.getY()==segments.get(i).getY()){
-  food=1;
-}
-  // reset your food variable
 
-  //Call this method at the beginning of your manageTail method.
+    if ((head.getX()==segments.get(i).getX())&&(head.getY()==segments.get(i).getY())) {
+      food=1;
+    }
+    // reset your food variable
 
-}
+    //Call this method at the beginning of your manageTail method.
+  }
 }
